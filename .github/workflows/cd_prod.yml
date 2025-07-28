@@ -1,0 +1,33 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: "47.251.49.122"
+          username: "root"
+          password: "fiji2030fiji!"
+          # Optionally, add known_hosts if needed:
+          # known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm use 18
+            node -v  # Debug: Check if Node.js is loaded correctly
+            npm -v   # Debug: Check if NPM is available
+            pm2 -v   # Debug: Check if PM2 is available
+            cd /var/www/energy-efficiency-canada
+            git checkout main
+            git pull
+            npm install
+            npm run build
+            pm2 restart eec

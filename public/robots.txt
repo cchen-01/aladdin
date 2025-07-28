@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://electricitycouncilcanada.com
+
+# Sitemaps
+Sitemap: https://electricitycouncilcanada.com/sitemap.xml
