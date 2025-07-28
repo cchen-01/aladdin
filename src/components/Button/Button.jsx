@@ -13,20 +13,22 @@ export default function Button({
   return (
     <Link
       href={href}
-      className={`border bg-transparent px-6 py-4 rounded-full transition ${
+      className={`group border px-6 py-4 rounded-full transition duration-200 ease-in-out ${
         white
-          ? "border-white hover:bg-white"
-          : "border-[#112526] hover:bg-[#112526]"
+          ? "border-white bg-transparent hover:bg-white"
+          : "border-[#112526] bg-transparent hover:bg-[#112526]"
       } ${className}`}
       {...props}
     >
-      {white ? (
-        <Bodylsb className="font-inter text-white hover:text-black">{children}</Bodylsb>
-      ) : (
-        <Bodylsb className="font-inter text-[#112526] hover:text-white">
-          {children}
-        </Bodylsb>
-      )}
+      <Bodylsb
+        className={`font-inter transition-colors duration-200 ${
+          white
+            ? "text-white group-hover:text-black"
+            : "text-[#112526] group-hover:text-white"
+        }`}
+      >
+        {children}
+      </Bodylsb>
     </Link>
   );
 }

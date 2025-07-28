@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Button from "../../Button/Button"; // Import the reusable Button
 import { Section } from "../../Section/Section";
@@ -11,11 +11,27 @@ import ArrowDownIcon from "../../../../public/svg/ArrowDownIcon";
 export default function NavDestop({ isContact }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 0);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+      setDropdownOpen(false); // ✅ Close dropdown on scroll
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -69,7 +85,10 @@ export default function NavDestop({ isContact }) {
                 </SGHeader>
               </Link>
               {/* Service */}
-              <div className="relative group flex items-center">
+              <div
+                className="relative group flex items-center"
+                ref={dropdownRef}
+              >
                 <button
                   onClick={() => setDropdownOpen(!isDropdownOpen)}
                   className={`${
