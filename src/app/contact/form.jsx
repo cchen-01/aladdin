@@ -44,7 +44,7 @@ export default function Form({ setSubmissionSuccess }) {
     setSubmissionError(false);
 
     try {
-      const response = await fetch("/api/submit-contact", {
+      const response = await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, sheetId: "Sheet1" }),
