@@ -5,6 +5,7 @@ import SGHeader from "@/components/typography/SGHeader";
 import Button from "../Button/Button";
 import { Section } from "../Section/Section";
 import { Bodymmd } from "@coolsday/polaron-design-system";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -53,13 +54,18 @@ function Footer() {
               <SGHeader className="text-[16px] md:text-2xl mb-6 md:mb-8 text-white">
                 About
               </SGHeader>
+
               <ul className="space-y-1">
                 <li className="mb-4 md:mb-6">
-                  <Bodymmd>Our Company</Bodymmd>
+                  <Link href="/about">
+                    <Bodymmd>Our Company</Bodymmd>
+                  </Link>
                 </li>
-                <li>
-                  <Bodymmd>Contact Us</Bodymmd>
-                </li>
+                <Link href="/contact">
+                  <li>
+                    <Bodymmd>Contact Us</Bodymmd>
+                  </li>
+                </Link>
               </ul>
             </div>
 
@@ -85,12 +91,16 @@ function Footer() {
               Service
             </SGHeader>
             <ul className="space-y-1">
-              <li className="mb-4 md:mb-6">
-                <Bodymmd>Site Surveys</Bodymmd>
-              </li>
-              <li>
-                <Bodymmd>Solar Project Management</Bodymmd>
-              </li>
+              <Link href="/services/sitesurvey">
+                <li className="mb-4 md:mb-6">
+                  <Bodymmd>Site Surveys</Bodymmd>
+                </li>
+              </Link>
+              <Link href="/services/solar-project-management">
+                <li>
+                  <Bodymmd>Solar Project Management</Bodymmd>
+                </li>
+              </Link>
             </ul>
           </div>
 
