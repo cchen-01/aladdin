@@ -1,14 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Script from 'next/script';
+import Script from "next/script";
 import { Sora } from "next/font/google";
-import "./globals.css";
 
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
 });
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +28,24 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico?v=2" />
+
+        {/* ✅ HREFLANG TAGS FOR SEO */}
+        <link
+          rel="alternate"
+          href="https://clinquant-hummingbird-ef8d1b.netlify.app/"
+          hreflang="en"
+        />
+        <link
+          rel="alternate"
+          href="https://clinquant-hummingbird-ef8d1b.netlify.app/"
+          hreflang="x-default"
+        />
+
         <noscript>
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=618746834331897&ev=PageView&noscript=1"
           />
         </noscript>

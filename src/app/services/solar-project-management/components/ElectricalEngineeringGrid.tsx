@@ -7,7 +7,7 @@ export default function ElectricalEngineeringGrid({ items }) {
     {
       imageUrl: "/svg/diagram.svg",
       title: "Single-Line Diagrams",
-      paragraph: "Clear electrical schematics for permitting.",
+      paragraph: "Clear electrical schematics for permitting",
     },
     {
       imageUrl: "/svg/system.svg",

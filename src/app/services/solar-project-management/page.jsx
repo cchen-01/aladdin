@@ -25,7 +25,7 @@ const services = [
     title: "Commercial",
     imageUrl: "/solarproject/site-survey-project-commercial.png",
     description:
-      "We first evaluate how much load your structure can bear, then review the final array design to ensure long-term safety and compliance.s",
+      "We first evaluate how much load your structure can bear, then review the final array design to ensure long-term safety and compliance.",
   },
 ];
 
